@@ -1,6 +1,6 @@
-import React from 'react'
-import styles from '../../styles/home.module.css'
-import { motion } from 'framer-motion'
+import React from "react";
+import styles from "../../styles/home.module.css";
+import { motion } from "framer-motion";
 
 const titleVariants = {
   offscreen: {
@@ -9,11 +9,11 @@ const titleVariants = {
   onscreen: {
     x: 0,
     transition: {
-      type: 'spring',
+      type: "spring",
       bounce: 0.2,
     },
   },
-}
+};
 
 const descVariants = {
   offscreen: {
@@ -22,11 +22,11 @@ const descVariants = {
   onscreen: {
     x: 0,
     transition: {
-      type: 'spring',
+      type: "spring",
       bounce: 0.5,
     },
   },
-}
+};
 const imgVariants = {
   offscreen: {
     x: -100,
@@ -36,200 +36,167 @@ const imgVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      type: 'spring',
+      type: "spring",
       duration: 1.5,
     },
   },
-}
+};
+
 const Services = () => {
   return (
-    <div style={{ background: 'var(--backgroundColor)' }}>
+    <div className={styles.servicesContainer}>
       <div>
-        <h1
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            padding: '2rem 0',
-          }}
-        >
-          Our Services
-        </h1>
+        <h1 className={styles.servicesTitle}>Dịch Vụ Của Chúng Tôi</h1>
 
-        <motion.div className={styles.serviceslayout}>
-          <motion.img
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true }}
-            className={styles.serviceimg}
-            variants={imgVariants}
-            src="/static/img/services_dashboard.png"
-            alt=""
-          ></motion.img>
-          <div className={styles.servicetext}>
-            <motion.h1
+        <div className={styles.servicesLayout}>
+          <motion.div className={styles.serviceItem}>
+            <motion.img
               initial="offscreen"
               whileInView="onscreen"
               viewport={{ once: true }}
-              variants={titleVariants}
-              className={styles.serviceTitle}
-            >
-              Today's health
-            </motion.h1>
-            <motion.p variants={descVariants} style={{ fontSize: '17px' }}>
-              Our main dashboard tracks today's calories progress along with
-              amount of nutrients consuming. And we let you see today's food and
-              nutrients associated with it.
-            </motion.p>
-          </div>
-        </motion.div>
+              className={styles.serviceImg}
+              variants={imgVariants}
+              src="/static/img/services_dashboard.png"
+              alt="Bảng Điều Khiển"
+            />
+            <div className={styles.serviceText}>
+              <motion.h1
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true }}
+                variants={titleVariants}
+                className={styles.serviceTitle}
+              >
+                Sức Khỏe Hôm Nay
+              </motion.h1>
+              <motion.p variants={descVariants} className={styles.serviceDesc}>
+                Bảng điều khiển chính của chúng tôi theo dõi tiến độ calo tiêu
+                thụ hôm nay cùng với lượng chất dinh dưỡng đã nạp. Bạn cũng có
+                thể xem các món ăn và chất dinh dưỡng liên quan.
+              </motion.p>
+            </div>
+          </motion.div>
 
-        <hr
-          style={{
-            border: 'dotted #7C3E66 6px',
-            borderBottom: 'none',
-            width: '10%',
-            margin: '100px auto',
-          }}
-        ></hr>
-
-        <motion.div className={styles.serviceslayout}>
-          <motion.img
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true }}
-            className={styles.serviceimg}
-            variants={imgVariants}
-            src="/static/img/services_week.png"
-            alt=""
-          ></motion.img>
-          <div className={styles.servicetext}>
-            <motion.h1
+          <motion.div className={styles.serviceItem}>
+            <motion.img
               initial="offscreen"
               whileInView="onscreen"
               viewport={{ once: true }}
-              variants={titleVariants}
-              className={styles.serviceTitle}
-            >
-              Detailed Reports
-            </motion.h1>
-            <motion.p variants={descVariants} style={{ fontSize: '17px' }}>
-              Our Analytic Charts gives you detailed analysis about your daily
-              intake of nutrients. You can track your food along with Nutrients
-              for past 7 days.
-            </motion.p>
-          </div>
-        </motion.div>
+              className={styles.serviceImg}
+              variants={imgVariants}
+              src="/static/img/analytic.png"
+              alt="Báo Cáo Hàng Tuần"
+            />
+            <div className={styles.serviceText}>
+              <motion.h1
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true }}
+                variants={titleVariants}
+                className={styles.serviceTitle}
+              >
+                Báo Cáo Chi Tiết
+              </motion.h1>
+              <motion.p variants={descVariants} className={styles.serviceDesc}>
+                Biểu đồ phân tích của chúng tôi cung cấp chi tiết về lượng chất
+                dinh dưỡng nạp vào hàng ngày. Bạn có thể theo dõi thực phẩm cùng
+                các chất dinh dưỡng trong 7 ngày qua.
+              </motion.p>
+            </div>
+          </motion.div>
+        </div>
 
-        <hr
-          style={{
-            border: 'dotted #7C3E66 6px',
-            borderBottom: 'none',
-            width: '10%',
-            margin: '100px auto',
-          }}
-        ></hr>
-        <motion.div className={styles.serviceslayout}>
-          <motion.img
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true }}
-            variants={imgVariants}
-            className={styles.serviceimg}
-            src="/static/img/services_food.png"
-            alt=""
-          ></motion.img>
-          <div className={styles.servicetext}>
-            <motion.h1
+        <div className={styles.servicesLayout}>
+          <motion.div className={styles.serviceItem}>
+            <motion.img
               initial="offscreen"
               whileInView="onscreen"
               viewport={{ once: true }}
-              variants={titleVariants}
-              className={styles.serviceTitle}
-            >
-              Tracking Meals
-            </motion.h1>
-            <motion.p variants={descVariants} style={{ fontSize: '17px' }}>
-              Yes, you can see what you have been taking for a week. You can be
-              aware of food items you take. This will give you great knowledge
-              about what need to be controlled and what not. This time you will
-              never forget what you ate😝
-            </motion.p>
-          </div>
-        </motion.div>
-        <hr
-          style={{
-            border: 'dotted #7C3E66 6px',
-            borderBottom: 'none',
-            width: '8%',
-            margin: '100px auto',
-          }}
-        ></hr>
-        <motion.div className={styles.serviceslayout}>
-          <motion.img
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true }}
-            variants={imgVariants}
-            className={styles.serviceimg}
-            src="/static/img/services_details.png"
-            alt=""
-          ></motion.img>
-          <div className={styles.servicetext}>
-            <motion.h1
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ once: true }}
-              variants={titleVariants}
-              className={styles.serviceTitle}
-            >
-              Capture And Obtain
-            </motion.h1>
-            <motion.p variants={descVariants} style={{ fontSize: '17px' }}>
-              After capturing or uploading the image We will provide total
-              calories and all nutrients you will acquire. You can cancel or add
-              the food to your dairy.
-            </motion.p>
-          </div>
-        </motion.div>
+              variants={imgVariants}
+              className={styles.serviceImg}
+              src="/static/img/food.png"
+              alt="Theo Dõi Bữa Ăn"
+            />
+            <div className={styles.serviceText}>
+              <motion.h1
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true }}
+                variants={titleVariants}
+                className={styles.serviceTitle}
+              >
+                Theo Dõi Bữa Ăn
+              </motion.h1>
+              <motion.p variants={descVariants} className={styles.serviceDesc}>
+                Bạn có thể xem những gì đã ăn trong một tuần. Điều này giúp bạn
+                nhận thức rõ hơn về thực phẩm bạn tiêu thụ, kiểm soát những gì
+                cần và không cần. Bạn sẽ không bao giờ quên đã ăn gì! 😝
+              </motion.p>
+            </div>
+          </motion.div>
 
-        <hr
-          style={{
-            border: 'dotted #7C3E66 6px',
-            borderBottom: 'none',
-            width: '8%',
-            margin: '100px auto',
-          }}
-        ></hr>
-        <motion.div className={styles.serviceslayout}>
-          <motion.img
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true }}
-            variants={imgVariants}
-            className={styles.serviceimg}
-            src="/static/img/services_blog.png"
-            alt=""
-          ></motion.img>
-          <div className={styles.servicetext}>
-            <motion.h1
+          <motion.div className={styles.serviceItem}>
+            <motion.img
               initial="offscreen"
               whileInView="onscreen"
               viewport={{ once: true }}
-              variants={titleVariants}
-              className={styles.serviceTitle}
-            >
-              Everything You Need To Know
-            </motion.h1>
-            <motion.p variants={descVariants} style={{ fontSize: '17px' }}>
-              Our Blog section provides you detailed research about foods,
-              nutrients, healthy diet plans, food categories based on nutrients,
-              Successful diet plans based on your body goals.
-            </motion.p>
-          </div>
-        </motion.div>
+              variants={imgVariants}
+              className={styles.serviceImg}
+              src="/static/img/services_details.png"
+              alt="Ghi Lại Chi Tiết"
+            />
+            <div className={styles.serviceText}>
+              <motion.h1
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true }}
+                variants={titleVariants}
+                className={styles.serviceTitle}
+              >
+                Ghi Lại và Xác Định
+              </motion.h1>
+              <motion.p variants={descVariants} className={styles.serviceDesc}>
+                Sau khi chụp hoặc tải lên hình ảnh, chúng tôi sẽ cung cấp tổng
+                calo và tất cả chất dinh dưỡng bạn sẽ nhận được. Bạn có thể hủy
+                hoặc thêm thực phẩm vào nhật ký của mình.
+              </motion.p>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className={styles.servicesLayout}>
+          <motion.div className={styles.serviceItem}>
+            <motion.img
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true }}
+              variants={imgVariants}
+              className={styles.serviceImg}
+              src="/static/img/services_blog.png"
+              alt="Blog"
+            />
+            <div className={styles.serviceText}>
+              <motion.h1
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true }}
+                variants={titleVariants}
+                className={styles.serviceTitle}
+              >
+                Tất Cả Thông Tin Bạn Cần Biết
+              </motion.h1>
+              <motion.p variants={descVariants} className={styles.serviceDesc}>
+                Phần Blog cung cấp nghiên cứu chi tiết về thực phẩm, chất dinh
+                dưỡng, kế hoạch ăn kiêng lành mạnh, danh mục thực phẩm dựa trên
+                chất dinh dưỡng, và các kế hoạch thành công dựa trên mục tiêu cơ
+                thể của bạn.
+              </motion.p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;

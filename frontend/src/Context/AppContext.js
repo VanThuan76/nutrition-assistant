@@ -54,7 +54,7 @@ export const AppContextProvider = ({ children }) => {
                     variant: 'error',
                 });
             } else {
-                enqueueSnackbar('Something went wrong', {
+                enqueueSnackbar('Đã có lỗi xảy ra', {
                     variant: 'error',
                 });
             }

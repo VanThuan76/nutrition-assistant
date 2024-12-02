@@ -15,52 +15,75 @@ from src.config.firebase import upload_image_to_firebase
 food = Blueprint('food', __name__, url_prefix='/api/food')
 
 
+import logging
+
 @food.post('/capture-food')
 @token_required
 def capture_food(current_user):
     try:
+        logging.info(f"User {current_user.id} initiated food capture process.")  # Log thông tin user
 
+        # Kiểm tra file gửi lên
         if not request.files:
-            return{
-                'msg': 'Please send image file with [name=foodImage]'
-            }, 400
+            logging.warning("No files received in the request.")
+            return {'msg': 'Please send image file with [name=foodImage]'}, 400
+
         image = request.files.get('foodImage')
+        logging.info(f"Received file: {image.filename}")
+
+        # Xử lý filename và lưu file
         ext = image.filename.split(".")[-1]
-        filename = str(uuid.uuid4()) + '.'+ext
+        filename = str(uuid.uuid4()) + '.' + ext
         filepath = os.path.join(
             str(current_app.config.get('IMAGE_UPLOADS')), filename)
-        image.save(filepath)
+        logging.info(f"Saving file to {filepath}")
 
-        # Upload image to ibm object storage and get image public url
+        image.save(filepath)
+        logging.info(f"File saved successfully: {filepath}")
+
+        # Upload image lên Firebase
+        logging.info("Uploading image to Firebase...")
         upload_image_to_firebase(filename, filepath)
-        # send image url to identify food item using ai food detection service
+        logging.info("Image uploaded successfully.")
+
+        # Lấy public URL của file
         image_url = getFileStorageURL(filename)
-        foodItemsResponse = requests.post(AI_SERVICE_ENDPOINT+'/clarifai/detect-food', json={
-            'image_url': image_url
-        })
+        logging.info(f"Generated image URL: {image_url}")
+
+        # Gửi image_url tới AI service để nhận diện món ăn
+        logging.info("Sending image to AI service...")
+        foodItemsResponse = requests.post(
+            AI_SERVICE_ENDPOINT + '/clarifai/detect-food',
+            json={'image_url': image_url}
+        )
+        logging.info(f"AI service response status: {foodItemsResponse.status_code}")
 
         if foodItemsResponse.status_code != 200:
-            logging.error(f"Error from AI service: {foodItemsResponse.text}")
+            logging.error(f"AI service error: {foodItemsResponse.text}")
             return {
                 'msg': 'Failed to detect food items from AI service',
                 'error': foodItemsResponse.text
             }, 500
 
-        foodItems = foodItemsResponse.json()['foodItems']
+        foodItems = foodItemsResponse.json().get('foodItems', [])
+        logging.info(f"Food items detected: {foodItems}")
 
-        # return identified food items
-
+        # Xóa file tạm thời
         if os.path.exists(filepath):
+            logging.info(f"Removing temporary file: {filepath}")
             os.remove(filepath)
+
         return {
             'image_url': image_url,
             'foodItems': foodItems
         }
-    except Exception as e:
-        if os.path.exists(filepath):
-            os.remove(filepath)
-        return{
 
+    except Exception as e:
+        logging.error(f"An error occurred: {str(e)}", exc_info=True)
+        if os.path.exists(filepath):
+            logging.info(f"Removing temporary file due to error: {filepath}")
+            os.remove(filepath)
+        return {
             'msg': 'Something went wrong',
             'error': str(e)
         }, 500

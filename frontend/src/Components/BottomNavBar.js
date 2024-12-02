@@ -85,7 +85,7 @@ const BottomNavBar = () => {
                                 <span className={styles.icon}>
                                     <HomeIcon fontSize='large' />
                                 </span>
-                                <span className={styles.text}>Dashboard</span>
+                                <span className={styles.text}>Điều khiển</span>
                             </Link>
                         </li>
 
@@ -102,7 +102,7 @@ const BottomNavBar = () => {
                                 <span className={styles.icon}>
                                     <CalendarMonthIcon fontSize='large' />
                                 </span>
-                                <span className={styles.text}>Reports</span>
+                                <span className={styles.text}>Phân tích</span>
                             </Link>
                         </li>
                         <li
@@ -133,7 +133,7 @@ const BottomNavBar = () => {
                                 <span className={styles.icon}>
                                     <CameraAltIcon fontSize='large' />
                                 </span>
-                                <span className={styles.text}>Capture</span>
+                                <span className={styles.text}>Chụp ảnh</span>
                             </Link>
                         </li>
                         <li
@@ -149,7 +149,7 @@ const BottomNavBar = () => {
                                 <span className={styles.icon}>
                                     <FeedIcon fontSize='large' />
                                 </span>
-                                <span className={styles.text}>Feed</span>
+                                <span className={styles.text}>Blog</span>
                             </Link>
                         </li>
                         <li
@@ -164,7 +164,7 @@ const BottomNavBar = () => {
                                 <span className={styles.icon}>
                                     <PersonIcon fontSize='large' />
                                 </span>
-                                <span className={styles.text}>Profile</span>
+                                <span className={styles.text}>Cá nhân</span>
                             </Link>
                         </li>
                         <div className={styles.indicator}></div>

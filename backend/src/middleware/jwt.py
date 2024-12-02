@@ -5,7 +5,6 @@ from flask import request
 from flask import current_app
 from src.config.db import session, User
 
-
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):

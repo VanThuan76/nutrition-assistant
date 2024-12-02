@@ -10,7 +10,9 @@ import { Box, Container, Divider } from '@mui/material';
 import { API } from '../../services/apis';
 import { useSnackbar } from 'notistack';
 import { FullPageLoading } from '../../Components/LoadingSpinner';
-const UNITS = ['gm', 'ounce', 'ml', 'pieces', 'slices', 'cup', 'tbsp'];
+
+const UNITS = ['gam', 'ounce', 'ml', 'miếng', 'lát', 'cốc', 'thìa canh'];
+
 const ScannedImg = () => {
     const { enqueueSnackbar } = useSnackbar();
     const { state } = useLocation();
@@ -35,7 +37,7 @@ const ScannedImg = () => {
                     variant: 'error',
                 });
             else
-                enqueueSnackbar('Something went wrong. Try again', {
+                enqueueSnackbar('Đã có lỗi xảy ra. Try again', {
                     variant: 'error',
                 });
         }
@@ -48,7 +50,7 @@ const ScannedImg = () => {
             );
         } else {
             if (selectedItems.length === 3) {
-                enqueueSnackbar('Select 3 items only', { variant: 'error' });
+                enqueueSnackbar('Chỉ lựa chọn 3 thành phần', { variant: 'error' });
                 return;
             }
 
@@ -69,7 +71,7 @@ const ScannedImg = () => {
 
     const handleNext = async () => {
         if (selectedItems.length === 0) {
-            enqueueSnackbar('Please select atleast 1 item', {
+            enqueueSnackbar('Vui lòng chọn ít nhất 1 thành phần', {
                 variant: 'error',
             });
             return;
@@ -99,7 +101,7 @@ const ScannedImg = () => {
                     variant: 'error',
                 });
             else
-                enqueueSnackbar('Something went wrong. Try again', {
+                enqueueSnackbar('Đã có lỗi xảy ra. Try again', {
                     variant: 'error',
                 });
         }
@@ -176,7 +178,7 @@ const ScannedImg = () => {
                                         >
                                             {' '}
                                             <span style={{ fontSize: '16px' }}>
-                                                Next
+                                                Tiếp theo
                                             </span>{' '}
                                             <ArrowForwardIos
                                                 sx={{ fontSize: '16px' }}
@@ -228,7 +230,7 @@ const ScannedImg = () => {
                                     <label
                                         htmlFor='img'
                                         style={{
-                                            padding: '8px',
+                                            padding: '5px',
                                             background: 'var(--themecolor)',
                                             color: '#fff',
                                             width: '6.8rem',
@@ -240,13 +242,13 @@ const ScannedImg = () => {
                                     >
                                         <CameraswitchIcon />{' '}
                                         <span style={{ marginLeft: '7px' }}>
-                                            Retake
+                                            Chụp lại
                                         </span>
                                     </label>
                                 </div>
                             </div>
                             <h3 align='center' style={{ marginTop: '8px' }}>
-                                Select the ingredients
+                                Lựa chọn thành phần
                             </h3>
                             <div
                                 style={{

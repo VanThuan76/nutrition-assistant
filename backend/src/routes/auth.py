@@ -49,7 +49,7 @@ def login():
 
         if user is None:
             return {
-                'msg': 'Email not registered. Please signup.'
+                'msg': 'Email chưa được đăng ký. Vui lòng đăng ký'
             }, 404
 
         if user.login_password is None:
