@@ -56,7 +56,7 @@ const Signup = () => {
     }
     setisLoading(true);
     try {
-      const res = await API.register({
+      const res = await API.signup({
         email: state.email,
         password: state.password,
         username: state.username,
