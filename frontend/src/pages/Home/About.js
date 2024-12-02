@@ -9,7 +9,6 @@ const imgVariants = {
   },
   onscreen: {
     y: 0,
-
     opacity: 1,
     transition: {
       type: "spring",
@@ -21,34 +20,26 @@ const imgVariants = {
 const About = () => {
   return (
     <div>
+      <h1 className={styles.aboutTitle}>About Us</h1>
       <div className={styles.why}>
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.8 }}
-          style={{
-            display: "flex",
-            justifyContent: "center"
-          }}
+          className={styles.imageWrapper}
         >
           <motion.img
             variants={imgVariants}
-            style={{
-              width: "60%",
-              height: "100%",
-              objectFit: "contain",
-              borderRadius: "25px",
-              boxShadow:
-                "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-            }}
-            src="/static/img/snack-bento-box.webp"
-            alt=""
-          ></motion.img>
+            className={styles.whyImg}
+            src="/static/img/why-1.png"
+            alt="Why Choose Us"
+          />
         </motion.div>
         <motion.div className={styles.text}>
           Relax, We will take care of your healthy DIET
         </motion.div>
       </div>
+
       <div
         className={`${styles.why} ${styles.rev}`}
         style={{ backgroundColor: "#f6f6f6" }}
@@ -56,38 +47,34 @@ const About = () => {
         <motion.div className={styles.text}>
           Just take a snap, And know what you are taking
         </motion.div>
-
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.8 }}
+          className={styles.imageWrapper}
         >
           <motion.img
             variants={imgVariants}
-            style={{
-              width: "17rem",
-              height: "22rem",
-            }}
-            src="/static/img/takingSnap.webp"
-            alt=""
-          ></motion.img>
+            className={styles.whyImg}
+            src="/static/img/why-2.png"
+            alt="Snap and Know"
+          />
         </motion.div>
       </div>
+
       <div className={styles.why}>
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.8 }}
+          className={styles.imageWrapper}
         >
           <motion.img
             variants={imgVariants}
-            style={{
-              width: "16rem",
-              height: "16rem",
-            }}
-            src="/static/img/data-analytic-icon-6.png"
-            alt=""
-          ></motion.img>
+            className={styles.whyImg}
+            src="/static/img/why-3.png"
+            alt="Analytics"
+          />
         </motion.div>
         <motion.div className={styles.text}>
           We let you track and compare your diet over past week by smooth

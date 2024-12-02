@@ -95,7 +95,7 @@ const UserInitialForm = () => {
                 </button>
                 <img
                     style={{ width: '4rem', padding: '6px 0 0 6px' }}
-                    src='/static/img/logo_crop.png'
+                    src='/static/img/logo.png'
                     alt=''
                 />
                 <Container maxWidth='sm'>
